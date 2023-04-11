@@ -7,11 +7,11 @@ import useShow from "./show";
 import useUpdate from "./update";
 
 export {
-  useCreate,
-  useDelete,
-  useFetch,
-  useList,
-  useRetrieve,
-  useShow,
-  useUpdate,
+	useCreate,
+	useDelete,
+	useFetch,
+	useList,
+	useRetrieve,
+	useShow,
+	useUpdate,
 };

@@ -1,13 +1,13 @@
 export const normalizeLinks = (
-  value: string | string[] | undefined
+	value: string | string[] | undefined
 ): string[] => {
-  if (!value) {
-    return [];
-  }
+	if (!value) {
+		return [];
+	}
 
-  if (typeof value === "string") {
-    return value.split(",");
-  }
+	if (typeof value === "string") {
+		return value.split(",");
+	}
 
-  return value;
+	return value;
 };

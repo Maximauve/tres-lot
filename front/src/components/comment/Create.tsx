@@ -5,67 +5,67 @@ import { TError } from "../../utils/types";
 import TResource from "./type";
 
 interface CreateProps {
-  created: TResource | null;
-  create: (item: Partial<TResource>) => any;
-  error: TError;
-  reset: () => void;
-  loading: boolean;
+	created: TResource | null;
+	create: (item: Partial<TResource>) => any;
+	error: TError;
+	reset: () => void;
+	loading: boolean;
 }
 
 const CreateView = ({
-  create,
-  created,
-  error,
-  reset,
-  loading,
+	create,
+	created,
+	error,
+	reset,
+	loading,
 }: CreateProps) => {
-  if (created) {
-    return (
-      <Navigate
-        to={`/comments/edit/${encodeURIComponent(created["@id"])}`}
-        replace
-      />
-    );
-  }
+	if (created) {
+		return (
+			<Navigate
+				to={`/comments/edit/${encodeURIComponent(created["@id"])}`}
+				replace
+			/>
+		);
+	}
 
-  return (
-    <div>
-      <h1>Create Comment</h1>
+	return (
+		<div>
+			<h1>Create Comment</h1>
 
-      {loading && (
-        <div className="alert alert-info" role="status">
-          Loading...
-        </div>
-      )}
-      {error && (
-        <div className="alert alert-danger" role="alert">
-          <span className="fa fa-exclamation-triangle" aria-hidden="true" />{" "}
-          {error.message}
-        </div>
-      )}
+			{loading && (
+				<div className="alert alert-info" role="status">
+					Loading...
+				</div>
+			)}
+			{error && (
+				<div className="alert alert-danger" role="alert">
+					<span className="fa fa-exclamation-triangle" aria-hidden="true" />{" "}
+					{error.message}
+				</div>
+			)}
 
-      <Form onSubmit={create} error={error} reset={reset} />
-      <Link to="/comments/" className="btn btn-primary">
-        Back to list
-      </Link>
-    </div>
-  );
+			<Form onSubmit={create} error={error} reset={reset} />
+			<Link to="/comments/" className="btn btn-primary">
+				Back to list
+			</Link>
+		</div>
+	);
 };
 
 const Create = () => {
-  const { created, loading, error, reset, create } = useCreate<TResource>({
-    "@id": "ments",
-  });
+	const { created, loading, error, reset, create } = useCreate<TResource>({
+		"@id": "ments",
+	});
 
-  return (
-    <CreateView
-      created={created}
-      loading={loading}
-      error={error}
-      reset={reset}
-      create={create}
-    />
-  );
+	return (
+		<CreateView
+			created={created}
+			loading={loading}
+			error={error}
+			reset={reset}
+			create={create}
+		/>
+	);
 };
 
 export default Create;
