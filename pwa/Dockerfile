@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /srv/app
 
 RUN corepack enable && \
-	corepack prepare --activate pnpm@latest && \
+	corepack prepare --activate pnpm@7.30.0 && \
 	pnpm config -g set store-dir /.pnpm-store
 
 # Next.js collects completely anonymous telemetry data about general usage.
@@ -21,10 +21,10 @@ RUN corepack enable && \
 FROM builder_base AS deps
 
 COPY --link pnpm-lock.yaml ./
-RUN pnpm fetch
+RUN pnpm fetch --no-frozen-lockfile
 
 COPY --link . .
-RUN pnpm install -r --offline
+RUN pnpm install -r --offline --no-frozen-lockfile
 
 
 # Development image
@@ -33,7 +33,7 @@ FROM deps as dev
 EXPOSE 3000
 ENV PORT 3000
 
-CMD ["sh", "-c", "pnpm install -r --offline; pnpm dev"]
+CMD ["sh", "-c", "pnpm install -r --offline --no-frozen-lockfile; pnpm dev"]
 
 
 FROM builder_base AS builder
