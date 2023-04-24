@@ -1,0 +1,63 @@
+@use "./assets/_colors.scss" as colors;
+
+nav {
+	color: colors.$white;
+	display: flex;
+	justify-content: space-between;
+	background-color: colors.$primary;
+	align-items: center;
+
+	div {
+		height: fit-content;
+	}
+
+	.left {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+
+		p {
+			margin: 0;
+			margin-left: 2rem;
+			font-size: 2rem;
+			margin-right: 1rem;
+		}
+
+		ul {
+			display: flex;
+			justify-content: space-between;
+			list-style: none;
+			width: 20vw;
+			margin: 0;
+			padding: 0;
+
+			li {
+				padding: 1rem;
+			}
+		}
+	}
+
+	.right {
+		display: flex;
+		justify-content: flex-end;
+		width: 20vw;
+		align-items: center;
+
+		input {
+			margin: 1rem;
+			padding: 0.5rem;
+			border: none;
+			border-radius: 5px;
+			background-color: colors.$background;
+		}
+
+		p {
+			margin-left: 1rem;
+		}
+
+		&:last-child {
+			margin-right: 2rem;
+		}
+	}
+}

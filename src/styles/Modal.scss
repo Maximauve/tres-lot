@@ -1,0 +1,39 @@
+@use "./assets/_colors.scss" as colors;
+
+.modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(colors.$primary, 0.7);
+
+	.modal-block {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50vw;
+		height: 50vh;
+		background-color: colors.$background;
+		border-radius: 5px;
+
+		.modal-close {
+			position: absolute;
+			top: 1.25rem;
+			right: 1.25rem;
+		}
+
+		.modal-title {
+			color: colors.$black;
+			font-size: 2rem;
+		}
+
+		.modal-content {
+			color: colors.$black;
+			font-size: 1.5rem;
+		}
+	}
+
+
+}
