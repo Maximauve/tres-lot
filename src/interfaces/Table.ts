@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface Table extends ApiResource {
+export interface Table {
 	name?: string;
 	cards?: string[];
 	workspace?: string;

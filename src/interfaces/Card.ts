@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface Card extends ApiResource {
+export interface Card {
 	title?: string;
 	description?: string;
 	members?: any;

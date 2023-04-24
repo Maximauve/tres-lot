@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface Tag extends ApiResource {
+export interface Tag {
 	name?: string;
 	color?: string;
 	cards?: string[];

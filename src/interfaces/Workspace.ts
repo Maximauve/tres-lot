@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface Workspace extends ApiResource {
+export interface Workspace {
 	members?: any;
 	tables?: string[];
 	picture?: string;

@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface Comment extends ApiResource {
+export interface Comment {
 	author?: any;
 	content?: string;
 	date?: string;

@@ -1,6 +1,4 @@
-import { ApiResource } from "../utils/types";
-
-export interface User extends ApiResource {
+export interface User {
 	email?: string;
 	roles?: any;
 	password?: string;
