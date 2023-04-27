@@ -1,11 +1,18 @@
+import { Card } from "./Card";
+import { Workspace } from "./Workspace";
+
+export enum Role {
+	ADMIN = 'admin',
+	USER = 'user',
+}
+
 export interface User {
-	email?: string;
-	roles?: any;
-	password?: string;
-	username?: string;
-	cards?: string[];
-	workspaces?: string[];
+	id?: string;
+	email: string;
+	roles: Role;
+	password: string;
+	username: string;
+	cards?: Card[];
+	workspaces?: Workspace[];
 	profilePicture?: string;
-	profile_picture?: string;
-	userIdentifier?: string;
 }

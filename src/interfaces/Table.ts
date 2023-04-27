@@ -1,5 +1,8 @@
+import { Card } from "./Card";
+import { Workspace } from "./Workspace";
+
 export interface Table {
-	name?: string;
-	cards?: string[];
-	workspace?: string;
+	name: string;
+	cards?: Card[];
+	workspace: Workspace;
 }

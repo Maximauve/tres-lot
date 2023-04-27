@@ -1,10 +1,14 @@
+import { Comment } from "./Comment";
+import { Table } from "./Table";
+import { Tag } from "./Tag";
+import { User } from "./User";
+
 export interface Card {
-	title?: string;
+	title: string;
 	description?: string;
-	members?: any;
-	tags?: string[];
-	comments?: string[];
-	parent?: string;
+	members?: User[];
+	tags?: Tag[];
+	comments?: Comment[];
+	parent: Table;
 	dueDate?: string;
-	due_date?: string;
 }

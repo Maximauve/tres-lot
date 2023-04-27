@@ -1,6 +1,9 @@
+import { Card } from "./Card";
+import { User } from "./User";
+
 export interface Comment {
-	author?: any;
-	content?: string;
-	date?: string;
-	card?: string;
+	author: User;
+	content: string;
+	date: Date;
+	card: Card;
 }
