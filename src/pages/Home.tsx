@@ -1,13 +1,57 @@
-import Navbar from 'src/components/navbar/Navbar';
-import 'src/styles/Home.scss';
+import React, { useEffect } from 'react';
+import Navbar from 'src/components/navbar/Navbar';	
+import { useAuthState } from "react-firebase-hooks/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from '../firebase';
+import {  signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+ 
+const Home = () => {
+	
+	const [user, loading, error] = useAuthState(auth);
 
-function Home(): JSX.Element {
+	const navigate = useNavigate();
+ 
+    const handleLogout = () => {               
+        signOut(auth).then(() => {
+        // Sign-out successful.
+            navigate("/");
+            console.log("Signed out successfully")
+        }).catch((error) => {
+			console.log("Sign out error -> ", error)
+        });
+    }
+ 
+    useEffect(()=>{
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              const uid = user.uid;
+              console.log("uid", uid)
+            } else {
+              console.log("user is logged out")
+            }
+          });
+		if (loading) return;
+		if (!user) return navigate("/login");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, loading]);
+ 
 	return (
-		<div className="Home">
-			<Navbar />
-			<h1>Coucou</h1>
-		</div>
-	);
-}
+		<>
+			<nav>
+				<Navbar />
+				<p>
+					Welcome Home
+				</p>
 
-export default Home;
+				<div>
+					<button onClick={handleLogout}>
+						Logout
+					</button>
+				</div>
+			</nav>
+		</>
+	)
+}
+ 
+export default Home

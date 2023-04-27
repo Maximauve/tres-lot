@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Import your routes here
 import Home from './pages/Home';
-import WorkspaceRoutes from './routes/workspace';
-import NotFound from './pages/NotFound';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import "./styles/index.scss"
 
 
@@ -14,11 +14,16 @@ const root = ReactDOM.createRoot(
 root.render(
 	<React.StrictMode>
 		<Router>
-			<Routes>
-				<Route path="/" Component={Home} />
-				{WorkspaceRoutes.map((route) => route)}
-				<Route path="*" Component={NotFound} />
-			</Routes>
+			<div>
+				<section>                              
+					<Routes>
+						<Route path="/" element={<Home/>}/>
+						<Route path="/home" element={<Home/>}/>
+						<Route path="/signup" element={<Signup/>}/>
+						<Route path="/login" element={<Login/>}/>
+					</Routes>                    
+				</section>
+			</div>
 		</Router>
 	</React.StrictMode>
 );
