@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import Navbar from 'src/components/navbar/Navbar';	
 import { useAuthState } from "react-firebase-hooks/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '../firebase';
 import {  signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { auth } from 'src/config/firebase';
  
 const Home = () => {
 	
-	const [user, loading, error] = useAuthState(auth);
+	const [user, loading] = useAuthState(auth);
 
 	const navigate = useNavigate();
  
@@ -38,7 +38,6 @@ const Home = () => {
  
 	return (
 		<>
-			<nav>
 				<Navbar />
 				<p>
 					Welcome Home
@@ -49,7 +48,6 @@ const Home = () => {
 						Logout
 					</button>
 				</div>
-			</nav>
 		</>
 	)
 }
