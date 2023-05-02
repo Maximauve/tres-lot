@@ -1,5 +1,5 @@
 import { Comment } from "./Comment";
-import { Table } from "./Table";
+import { List } from "./List";
 import { Tag } from "./Tag";
 import { User } from "./User";
 
@@ -9,6 +9,6 @@ export interface Card {
 	members?: User[];
 	tags?: Tag[];
 	comments?: Comment[];
-	parent: Table;
+	parent: List;
 	dueDate?: string;
 }
