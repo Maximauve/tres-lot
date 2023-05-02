@@ -12,29 +12,29 @@ const Home = () => {
 
 	const navigate = useNavigate();
  
-    const handleLogout = () => {               
-        signOut(auth).then(() => {
-        // Sign-out successful.
-            navigate("/");
-            console.log("Signed out successfully")
-        }).catch((error) => {
+	const handleLogout = () => {               
+		signOut(auth).then(() => {
+		// Sign-out successful.
+			navigate("/");
+			console.log("Signed out successfully")
+		}).catch((error) => {
 			console.log("Sign out error -> ", error)
-        });
-    }
+		});
+	}
  
-    useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              const uid = user.uid;
-              console.log("uid", uid)
-            } else {
-              console.log("user is logged out")
-            }
-          });
+	useEffect(()=>{
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+			  const uid = user.uid;
+			  console.log("uid", uid)
+			} else {
+			  console.log("user is logged out")
+			}
+		  });
 		if (loading) return;
 		if (!user) return navigate("/login");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user, loading]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [user, loading]);
  
 	return (
 		<>

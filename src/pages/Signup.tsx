@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, { useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { Role, User } from 'src/interfaces/User';
