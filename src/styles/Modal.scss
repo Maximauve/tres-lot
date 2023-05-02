@@ -10,6 +10,7 @@
 
 	.modal-block {
 		position: absolute;
+		padding: 2em;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
@@ -22,11 +23,19 @@
 			position: absolute;
 			top: 1.25rem;
 			right: 1.25rem;
+			border: none;
+			background-color: transparent;
+			color: colors.$black;
+			cursor: pointer;
 		}
 
 		.modal-title {
 			color: colors.$black;
 			font-size: 2rem;
+
+			p {
+				margin: 0;
+			}
 		}
 
 		.modal-content {
