@@ -21,6 +21,7 @@ const Login = () => {
 				navigate("/home")
 			})
 			.catch(() => {
+				setPassword('');
 				setError(true);
 			});
 
