@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "src/styles/Navbar.scss";
 import Modal from "../modal/Modal";
+import { WorkspaceForm } from "../workspace/CreationForm";
 
 const Navbar: React.FC = () => {
 
@@ -22,8 +23,8 @@ const Navbar: React.FC = () => {
 				<p>Thème</p>
 				<p>Profil</p>
 			</div>
-			<Modal show={show} setShow={setShow}>
-				<p>Modal</p>
+			<Modal title="Créer un espace de travail" show={show} setShow={setShow}>
+				<WorkspaceForm />
 			</Modal>
 		</nav>
 	)
