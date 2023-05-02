@@ -42,6 +42,20 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
 	return user;
 }
 
+export const getUserByUid = async (uid: string): Promise<User | null> => {
+	let q = query(collection(db, Collections.USER), where("uid", "==", uid));
+	let qSnap = await getDocs(q);
+	if (qSnap.empty) {
+		return null;
+	}
+
+	let user = qSnap.docs[0].data() as User;
+
+	user = await fillUserInfo(user);
+
+	return user;
+}
+
 export const getUserByUsername = async (username: string): Promise<User | null> => {
 	const q = query(collection(db, Collections.USER), where("username", "==", username));
 	const qSnap = await getDocs(q);
