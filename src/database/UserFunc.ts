@@ -70,7 +70,7 @@ export const getUserByUsername = async (username: string): Promise<User | null> 
 	return user;
 }
 
-export const createUser = async (user: User): Promise<void> => {
+export const createUser = async (user: User): Promise<User> => {
 	const user1 = await getUserByEmail(user.email);
 	const user2 = await getUserByUsername(user.username);
 	if (user1) {
@@ -80,7 +80,8 @@ export const createUser = async (user: User): Promise<void> => {
 		throw new Error("Ce nom d'utilisateur est déjà utilisé");
 	}
 	const userRef = collection(db, Collections.USER);
-	await addDoc(userRef, user);
+	const docRef = await addDoc(userRef, user);
+	return await getUser(docRef.id) as User;
 }
 
 export const getAllUsers = async (): Promise<User[]> => {

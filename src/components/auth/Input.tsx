@@ -5,7 +5,7 @@ interface Props {
 	name: string;
 	type: string;
 	placeholder: string;
-	onChange: (e: any) => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<Props> = (props: Props) => {

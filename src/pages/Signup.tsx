@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState } from 'react';
+import React, { FormEvent, useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Role, User } from 'src/interfaces/User';
@@ -7,9 +7,16 @@ import { createUser, getUserByUsername } from 'src/database/UserFunc';
 import { auth } from 'src/config/firebase';
 import Header from 'src/components/auth/Header';
 import Input from 'src/components/auth/Input';
+import { UserContext } from 'src/context/UserProvider';
+import { UserActionType } from 'src/context/userReducer';
 
 const Signup = () => {
 	const navigate = useNavigate();
+
+	const [state, dispatch] = useContext(UserContext);
+	if (state.user) {
+		navigate("/");
+	}
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('');
@@ -17,8 +24,9 @@ const Signup = () => {
 	const [username, setUsername] = useState('');
 	const [error, setError] = useState('');
 
-	const onSubmit = async (e: any) => {
+	const onSubmit = async (e: FormEvent) => {
 		e.preventDefault()
+		dispatch({ type: UserActionType.SET_LOADING, payload: true });
 		if (password !== confirm) {
 			setError("Les mots de passe ne correspondent pas")
 			return;
@@ -30,7 +38,7 @@ const Signup = () => {
 			await createUserWithEmailAndPassword(auth, email, password)
 				.then(async (newUser) => {
 					// Signed in
-					const user: User = {
+					let user: User = {
 						id: newUser.user.uid,
 						email,
 						username,
@@ -40,7 +48,9 @@ const Signup = () => {
 						cards: [],
 						profilePicture: "",
 					};
-					await createUser(user);
+					user = await createUser(user);
+					dispatch({ type: UserActionType.SET_USER, payload: user });
+
 					navigate("/login")
 				})
 				.catch((error) => {
