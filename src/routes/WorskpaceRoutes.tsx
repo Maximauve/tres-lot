@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, useParams } from "react-router-dom";
+import Project from "src/pages/Project";
 
 const WorkspaceHome: React.FC = () => {
 	const slug: string = useParams().slug as string;
@@ -8,15 +9,7 @@ const WorkspaceHome: React.FC = () => {
 	)
 }
 
-const WorkspaceProject: React.FC = () => {
-	const id: string = useParams().id as string;
-	const slug: string = useParams().slug as string;
-	return (
-		<h1>Workspace {id}, project {slug}</h1>
-	)
-}
-
 export const WorkspaceRoutes = [
 	<Route path="/w/:slug" element={<WorkspaceHome />} key="1" />,
-	<Route path="/w/:id/:slug" element={<WorkspaceProject />} key="2" />
+	<Route path="/w/:id/:slug" element={<Project />} key="2" />
 ]
