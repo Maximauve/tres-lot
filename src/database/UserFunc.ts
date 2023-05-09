@@ -17,7 +17,7 @@ const fillUserInfo = async (user: User): Promise<User> => {
 
 export const getUser = async (id: string): Promise<User | null> => {
 	const userRef = doc(db, Collections.USER, id);
-	let docSnap = await getDoc(userRef as DocumentReference<User>);
+	const docSnap = await getDoc(userRef as DocumentReference<User>);
 	if (!docSnap.exists()) {
 		return null;
 	}
@@ -29,8 +29,8 @@ export const getUser = async (id: string): Promise<User | null> => {
 }
 
 export const getUserByEmail = async (email: string): Promise<User | null> => {
-	let q = query(collection(db, Collections.USER), where("email", "==", email));
-	let qSnap = await getDocs(q);
+	const q = query(collection(db, Collections.USER), where("email", "==", email));
+	const qSnap = await getDocs(q);
 	if (qSnap.empty) {
 		return null;
 	}
@@ -43,8 +43,8 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
 }
 
 export const getUserByUid = async (uid: string): Promise<User | null> => {
-	let q = query(collection(db, Collections.USER), where("uid", "==", uid));
-	let qSnap = await getDocs(q);
+	const q = query(collection(db, Collections.USER), where("uid", "==", uid));
+	const qSnap = await getDocs(q);
 	if (qSnap.empty) {
 		return null;
 	}
