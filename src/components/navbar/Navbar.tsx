@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "src/styles/Navbar.scss";
 import Modal from "../modal/Modal";
 import { WorkspaceForm } from "../workspace/CreationForm";

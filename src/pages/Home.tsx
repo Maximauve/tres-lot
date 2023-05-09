@@ -30,7 +30,6 @@ const Home = () => {
 		});
 		if (loading) return;
 		if (!user) return navigate("/login");
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user, loading]);
 
 	return (

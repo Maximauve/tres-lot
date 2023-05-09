@@ -34,7 +34,7 @@ const Login = () => {
 						<Header title="Connectez vous à votre compte" />
 						{error && <p className="auth-error">Mot de passe ou email incorrect</p>}
 						<div className="auth-redirect">
-							<p className="auth-text">Vous n'avez pas encore de compte ?</p>
+							<p className="auth-text">Vous n&aposavez pas encore de compte ?</p>
 							<NavLink to="/signup">
 								Créer votre compte
 							</NavLink>
