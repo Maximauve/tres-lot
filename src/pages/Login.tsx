@@ -24,7 +24,6 @@ const Login = () => {
 				setPassword('');
 				setError(true);
 			});
-
 	}
 
 	return (
