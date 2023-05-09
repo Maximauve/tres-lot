@@ -5,19 +5,19 @@ interface Props {
 }
 
 const Header: React.FC<Props> = (props: Props) => {
-    const { title } = props;
+	const { title } = props;
 
-    return (
-        <div className="auth-header">
-            <img src="/images/logo.png"
-                alt="logo"
-                className="auth-header-logo"
-            />
-            <div className="auth-header-title">
-                {title}
-            </div>
-        </div>
-    )
+	return (
+		<div className="auth-header">
+			<img src="/images/logo.png"
+				alt="logo"
+				className="auth-header-logo"
+			/>
+			<div className="auth-header-title">
+				{title}
+			</div>
+		</div>
+	)
 }
 
 

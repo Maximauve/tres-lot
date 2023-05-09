@@ -5,13 +5,13 @@ interface Props {
 }
 
 const CardTag: React.FC<Props> = (props: Props) => {
-    const { color } = props;
+	const { color } = props;
 
-    return (
-        <div className="card-tag">
+	return (
+		<div className="card-tag">
 			<button className="tag" style={{backgroundColor: color}}></button>
 		</div>
-    )
+	)
 }
 
 

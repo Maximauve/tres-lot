@@ -6,9 +6,9 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = (props: Props) => {
-    const { title } = props;
+	const { title } = props;
 
-    return (
+	return (
 		<a className="card" href="/home">
 			<div className="card-tags">
 				<CardTag color="#000000" />
@@ -23,7 +23,7 @@ const ListItem: React.FC<Props> = (props: Props) => {
 				</div>
 			</div>
 		</a>
-    )
+	)
 }
 
 

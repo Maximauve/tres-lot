@@ -7,8 +7,8 @@ import 'src/styles/Project.scss'
 
 const Project = () => {
 	const slug: string = useParams().slug as string;
-	
-	
+
+
 	return (
 		<div className='project'>
 			<Navbar />
@@ -41,7 +41,7 @@ const Project = () => {
 
 export default Project;
 
-// Get a projet by slug, -> avoir les list -> cards -> members et tags 
+// Get a projet by slug, -> avoir les list -> cards -> members et tags
 // ajouter une carte à une liste
 // ajouter une liste à un projet
 // update une carte

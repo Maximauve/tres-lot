@@ -5,13 +5,13 @@ interface Props {
 }
 
 const Header: React.FC<Props> = (props: Props) => {
-    const { title } = props;
+	const { title } = props;
 
-    return (
-        <div className="project-header">
+	return (
+		<div className="project-header">
 			<textarea className="project-list-title" maxLength={512} defaultValue={title} />
 		</div>
-    )
+	)
 }
 
 
