@@ -1,13 +1,42 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { useParams } from 'react-router-dom';
 import Navbar from 'src/components/navbar/Navbar';
+import AskCard from 'src/components/projects/AskCard';
+import AddCards from 'src/components/projects/AddCards';
 import Header from 'src/components/projects/Header';
 import ListItem from 'src/components/projects/ListItem';
 import 'src/styles/Project.scss'
 
 const Project = () => {
-	const slug: string = useParams().slug as string;
+	// const slug: string = useParams().slug as string;
 
+
+	const AddCard = (e: any) => {
+		e.preventDefault();
+		let list = e.target;
+		while (!list.classList.contains("list")) {
+			list = list.parentElement;
+		}
+		const add = list.querySelector(".add") // .classList.add("hidden");
+		const askCard = <AskCard onClose={onClose} onAddCard={onAddCard}/>;
+		ReactDOM.render(askCard, add);
+	}
+
+	const onClose = (e: any) => {
+		e.preventDefault();
+		let list = e.target;
+		while (!list.classList.contains("list")) {
+			list = list.parentElement;
+		}
+		const add = list.querySelector(".add")
+		const askCard = <AddCards AddCard={AddCard}/>;
+		ReactDOM.render(askCard, add);
+	}
+
+	const onAddCard = (e: any) => {
+		e.preventDefault();
+	}
 
 	return (
 		<div className='project'>
@@ -21,10 +50,8 @@ const Project = () => {
 							<ListItem title="Test" />
 							<ListItem title="Oui" />
 						</div>
-						<div className="project-card-add">
-							<button className="card-add">
-								<span className="card-add-text">Ajouter une carte</span>
-							</button>
+						<div className="add">
+							<AddCards AddCard={AddCard} />
 						</div>
 					</div>
 				</div>
