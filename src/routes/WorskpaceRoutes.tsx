@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, useParams } from "react-router-dom";
-import Project from "src/pages/Project";
+import ProjectPage from "src/pages/ProjectPage";
 
 const WorkspaceHome: React.FC = () => {
 	const slug: string = useParams().slug as string;
@@ -11,5 +11,5 @@ const WorkspaceHome: React.FC = () => {
 
 export const WorkspaceRoutes = [
 	<Route path="/w/:slug" element={<WorkspaceHome />} key="1" />,
-	<Route path="/w/:id/:slug" element={<Project />} key="2" />
+	<Route path="/w/:id/:slug" element={<ProjectPage />} key="2" />
 ]

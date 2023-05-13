@@ -1,6 +1,7 @@
+import React from "react";
 import Navbar from "src/components/navbar/Navbar";
 
-function Workspace(): JSX.Element {
+const Workspace: React.FC = () => {
 	return (
 		<div>
 			<Navbar />
