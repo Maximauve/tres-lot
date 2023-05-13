@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
-import Navbar from 'src/components/navbar/Navbar';
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useContext, useEffect } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'src/config/firebase';
+import { UserContext } from 'src/context/UserProvider';
 
-const Home = () => {
-
-	const [user, loading] = useAuthState(auth);
+const Home: React.FC = () => {
 
 	const navigate = useNavigate();
+
+	const [state,] = useContext(UserContext);
+	if (!state.user) {
+		navigate("/login");
+		return null;
+	}
 
 	const handleLogout = () => {
 		signOut(auth).then(() => {
@@ -28,22 +31,15 @@ const Home = () => {
 				console.log("user is logged out")
 			}
 		});
-		if (loading) return;
-		if (!user) return navigate("/login");
-	}, [user, loading]);
+		if (!state.user) return navigate("/login");
+	}, [state]);
 
 	return (
 		<>
-			<Navbar />
-			<p>
-				Welcome Home
-			</p>
-
-			<div>
-				<button onClick={handleLogout}>
-					Logout
-				</button>
-			</div>
+			<p>Bonjour, {state.user.username} !</p>
+			<button onClick={handleLogout}>
+				Logout
+			</button>
 		</>
 	)
 }

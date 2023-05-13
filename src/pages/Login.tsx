@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useContext, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { NavLink, useNavigate } from 'react-router-dom'
 import "src/styles/Auth.scss";
 import Header from '../components/auth/Header';
 import { auth } from 'src/config/firebase';
 import Input from 'src/components/auth/Input';
+import { UserContext } from 'src/context/UserProvider';
+import { UserActionType } from 'src/context/userReducer';
+import { getUserByEmail } from 'src/database/UserFunc';
 
-const Login = () => {
+const Login: React.FC = () => {
 	const navigate = useNavigate();
+
+	const [state, dispatch] = useContext(UserContext);
+	if (state.user) {
+		navigate("/");
+	}
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
 
-	const onLogin = (e: any) => {
+	const onLogin = (e: MouseEvent) => {
 		e.preventDefault();
+		dispatch({ type: UserActionType.SET_LOADING, payload: true });
 		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed in
-				// const user = userCredential.user;
-				navigate("/home")
+			.then(() => {
+				getUserByEmail(email).then((user) => {
+					dispatch({ type: UserActionType.SET_USER, payload: user });
+				}).finally(() => {
+					navigate("/home");
+				});
 			})
 			.catch(() => {
 				setPassword('');
@@ -34,7 +46,7 @@ const Login = () => {
 						<Header title="Connectez vous à votre compte" />
 						{error && <p className="auth-error">Mot de passe ou email incorrect</p>}
 						<div className="auth-redirect">
-							<p className="auth-text">Vous n&aposavez pas encore de compte ?</p>
+							<p className="auth-text">Vous n'avez pas encore de compte ?</p>
 							<NavLink to="/signup">
 								Créer votre compte
 							</NavLink>

@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import "./styles/index.scss"
 import { WorkspaceRoutes } from './routes/WorskpaceRoutes';
+import UserProvider from './context/UserProvider';
 
 
 const root = ReactDOM.createRoot(
@@ -15,18 +16,20 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<Router>
-			<div>
-				<section>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/home" element={<Home />} />
-						<Route path="/signup" element={<Signup />} />
-						<Route path="/login" element={<Login />} />
-						{WorkspaceRoutes.map((route) => route)}
-					</Routes>
-				</section>
-			</div>
-		</Router>
+		<UserProvider>
+			<Router>
+				<div>
+					<section>
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/home" element={<Home />} />
+							<Route path="/signup" element={<Signup />} />
+							<Route path="/login" element={<Login />} />
+							{WorkspaceRoutes.map((route) => route)}
+						</Routes>
+					</section>
+				</div>
+			</Router>
+		</UserProvider>
 	</React.StrictMode>
 );

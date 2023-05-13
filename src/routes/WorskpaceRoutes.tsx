@@ -2,7 +2,7 @@ import React from "react";
 import { Route, useParams } from "react-router-dom";
 import ProjectPage from "src/pages/ProjectPage";
 
-const WorkspaceHome: React.FC = () => {
+export const WorkspaceHome: React.FC = () => {
 	const slug: string = useParams().slug as string;
 	return (
 		<h1>Workspace {slug}</h1>
