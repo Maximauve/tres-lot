@@ -12,6 +12,8 @@ export const createWorkspace = async (workspace: Workspace): Promise<void> => {
 			throw new Error("Vous avez déjà un workspace avec ce nom");
 		}
 	}
+	console.log("<WORKPACE_FUNC> workspace -> ", workspace);
+
 	const workspaceDoc = {
 		...workspace,
 		createdBy: workspace.createdBy.id,
