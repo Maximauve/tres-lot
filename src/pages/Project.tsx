@@ -7,8 +7,6 @@ import ListItem from 'src/components/projects/ListItem';
 import 'src/styles/Project.scss'
 
 const Project = () => {
-	// const slug: string = useParams().slug as string;
-
 
 	const AddCard = (e: any) => {
 		e.preventDefault();
@@ -16,7 +14,7 @@ const Project = () => {
 		while (!list.classList.contains("list")) {
 			list = list.parentElement;
 		}
-		const add = list.querySelector(".add") // .classList.add("hidden");
+		const add = list.querySelector(".add")
 		const askCard = <AskCard onClose={onClose} onAddCard={onAddCard} />;
 		ReactDOM.render(askCard, add);
 	}
@@ -55,7 +53,6 @@ const Project = () => {
 				<div className="big-list">
 					<div className="list">
 						<Header title="test2" />
-						{/* <ListItem title="Projet 2" /> */}
 					</div>
 				</div>
 			</div>
@@ -64,9 +61,3 @@ const Project = () => {
 }
 
 export default Project;
-
-// Get a projet by slug, -> avoir les list -> cards -> members et tags
-// ajouter une carte à une liste
-// ajouter une liste à un projet
-// update une carte
-
