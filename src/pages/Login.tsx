@@ -29,7 +29,7 @@ const Login: React.FC = () => {
 				getUserByEmail(email).then((user) => {
 					dispatch({ type: UserActionType.SET_USER, payload: user });
 				}).finally(() => {
-					navigate("/home");
+					navigate("/");
 				});
 			})
 			.catch(() => {

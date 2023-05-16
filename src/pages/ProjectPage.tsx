@@ -1,5 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
 import Navbar from 'src/components/navbar/Navbar';
 import AskCard from 'src/components/projects/AskCard';
 import AddCards from 'src/components/projects/AddCards';
@@ -52,8 +51,6 @@ const ProjectPage = () => {
 
 	const onAddCard = (e: any) => {
 		e.preventDefault();
-		console.log(e)
-		//const card = addCardDatabase()
 	}
 
 	return (
@@ -70,7 +67,6 @@ const ProjectPage = () => {
 
 export default ProjectPage;
 
-// Get a projet by slug, -> avoir les list -> cards -> members et tags
 // ajouter une carte à une liste
 // ajouter une liste à un projet
 // update une carte

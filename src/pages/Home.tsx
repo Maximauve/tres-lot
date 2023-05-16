@@ -3,17 +3,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth } from 'src/config/firebase';
-import { UserContext } from 'src/context/UserProvider';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Home: React.FC = () => {
 
 	const navigate = useNavigate();
-
-	const [state,] = useContext(UserContext);
-	if (!state.user) {
-		navigate("/login");
-		return null;
-	}
+	const [user, loading] = useAuthState(auth);
 
 	const handleLogout = () => {
 		signOut(auth).then(() => {
@@ -31,12 +26,12 @@ const Home: React.FC = () => {
 				console.log("user is logged out")
 			}
 		});
-		if (!state.user) return navigate("/login");
-	}, [state]);
+		if (loading) return;
+		if (!user) return navigate("/login");
+	}, [user, loading]);
 
 	return (
 		<>
-			<p>Bonjour, {state.user.username} !</p>
 			<button onClick={handleLogout}>
 				Logout
 			</button>
