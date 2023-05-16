@@ -22,8 +22,9 @@ export const userReducer = (state: UserState, action: Action<UserActionType>): U
 	switch (action.type) {
 		case UserActionType.SET_USER:
 			return {
+				...state,
 				user: action.payload,
-				loading: false,
+				loading: true,
 			}
 		case UserActionType.SET_LOADING:
 			return {

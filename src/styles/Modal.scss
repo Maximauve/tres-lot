@@ -2,6 +2,7 @@
 
 .modal {
 	position: absolute;
+	z-index: 100;
 	top: 0;
 	left: 0;
 	width: 100vw;
@@ -10,6 +11,7 @@
 
 	.modal-block {
 		position: absolute;
+		z-index: 101;
 		padding: 2em;
 		top: 50%;
 		left: 50%;

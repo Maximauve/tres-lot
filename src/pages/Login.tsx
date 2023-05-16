@@ -23,12 +23,15 @@ const Login: React.FC = () => {
 
 	const onLogin = (e: MouseEvent) => {
 		e.preventDefault();
-		dispatch({ type: UserActionType.SET_LOADING, payload: true });
 		signInWithEmailAndPassword(auth, email, password)
 			.then(() => {
 				getUserByEmail(email).then((user) => {
+					// console.log("<LOGIN> user => ", user); // le user est bien récupéré
 					dispatch({ type: UserActionType.SET_USER, payload: user });
+					// console.log("<LOGIN> state user => ", state.user); // le user n'est pas dans le state
+
 				}).finally(() => {
+					dispatch({ type: UserActionType.SET_LOADING, payload: false });
 					navigate("/");
 				});
 			})

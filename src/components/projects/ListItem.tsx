@@ -19,7 +19,7 @@ const ListItem: React.FC<Props> = (props: Props) => {
 			<span className="card-title">{title}</span>
 			<div className="card-members">
 				<div className="member">
-					<img src="https://i.imgur.com/JSW6mEk.png" alt="member" />	
+					<img src="https://i.imgur.com/JSW6mEk.png" alt="member" />
 				</div>
 			</div>
 		</a>

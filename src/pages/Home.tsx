@@ -12,7 +12,6 @@ const Home: React.FC = () => {
 
 	const handleLogout = () => {
 		signOut(auth).then(() => {
-			// Sign-out successful.
 			navigate("/");
 			console.log("Signed out successfully")
 		}).catch((error) => {
@@ -24,6 +23,7 @@ const Home: React.FC = () => {
 		onAuthStateChanged(auth, (user) => {
 			if (!user) {
 				console.log("user is logged out")
+				navigate("/login");
 			}
 		});
 		if (loading) return;

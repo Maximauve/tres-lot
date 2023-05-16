@@ -33,7 +33,7 @@ const ProjectPage = () => {
 		while (!list.classList.contains("list")) {
 			list = list.parentElement;
 		}
-		const add = list.querySelector(".add") // .classList.add("hidden");
+		const add = list.querySelector(".add")
 		const root = createRoot(add);
 		root.render(<AskCard onClose={onClose} onAddCard={onAddCard} />)
 	}
@@ -66,8 +66,4 @@ const ProjectPage = () => {
 }
 
 export default ProjectPage;
-
-// ajouter une carte à une liste
-// ajouter une liste à un projet
-// update une carte
 
