@@ -6,6 +6,7 @@ import Login from "src/pages/Login";
 import { WorkspaceHome } from "src/routes/WorskpaceRoutes";
 import Project from "src/pages/Project";
 import { GlobalLayout } from "src/pages/layout/GlobalLayout";
+import ProjectPage from "src/pages/ProjectPage";
 // import { PrivateRoute } from "src/routes/PrivateRoute";
 
 
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ":id/:slug",
-						element: <Project />
+						element: <ProjectPage />
 					}
 				],
 			},
