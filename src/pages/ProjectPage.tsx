@@ -56,7 +56,6 @@ const ProjectPage = () => {
 	return (
 		<>
 			<div className='project'>
-				<Navbar />
 				<div className="project-container">
 					<BigList list={projectItem?.lists ?? []} AddCard={AddCard} />
 				</div>
